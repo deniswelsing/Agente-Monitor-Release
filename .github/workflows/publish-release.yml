@@ -22,10 +22,10 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ steps.v.outputs.tag }}
         run: |
-          NOTES="Agent Monitor para Windows 64-bit. Baixe AgentMonitor-win64.zip, extraia a pasta inteira e execute AgentMonitor\\AgentMonitor.exe."
+          NOTES="Agent Monitor para Windows 64-bit. Baixe AgentMonitor-portable-win64.zip, extraia a pasta inteira e execute AgentMonitor\\AgentMonitor.exe."
           if gh release view "$TAG" >/dev/null 2>&1; then
-            gh release upload "$TAG" release/AgentMonitor-win64.zip --clobber
+            gh release upload "$TAG" release/AgentMonitor-portable-win64.zip --clobber
           else
-            gh release create "$TAG" release/AgentMonitor-win64.zip \
+            gh release create "$TAG" release/AgentMonitor-portable-win64.zip \
               --title "Agent Monitor $TAG" --notes "$NOTES" --target "$GITHUB_SHA" --latest
           fi
